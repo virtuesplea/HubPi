@@ -1,0 +1,10 @@
+#################################################
+## Non-Light Groups
+#################################################
+
+front_porch_outlets:
+  name: Front Porch Outlets
+  view: true
+  entities:
+  - switch.42621050600194bb5e72_1
+  - switch.42621050600194bb5e72_2

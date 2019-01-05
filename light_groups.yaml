@@ -1,0 +1,9 @@
+##################################################
+## Light Groups
+##################################################
+
+- platform: group
+  name: Front Porch Lights
+  entities:
+    - light.07200421dc4f224c193e
+    - light.07200421dc4f224c17e8

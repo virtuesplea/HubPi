@@ -1,0 +1,45 @@
+###################################################
+## Sensors
+###################################################
+
+- platform: moon
+
+- platform: yr #weather prediction
+
+- platform: darksky #weather
+  api_key: !secret darksky_api_key
+  forecast: 
+    - 0
+  latitude: !secret home_latitude
+  longitude: !secret home_longitude
+  update_interval:
+    minutes: 5
+  monitored_conditions:
+    - summary
+    - minutely_summary
+    - hourly_summary
+    - daily_summary
+    - icon
+    - nearest_storm_distance
+    - nearest_storm_bearing
+    - precip_type
+    - precip_intensity
+    - temperature
+    - apparent_temperature
+    - dew_point
+    - wind_speed
+    - wind_bearing
+    - cloud_cover
+    - humidity
+    - pressure
+    - visibility
+    - ozone
+
+- platform: uptime
+  unit_of_measurement: days 
+
+- platform: command_line
+  name: SSL cert expiry
+  unit_of_measurement: days
+  scan_interval: 10800
+  command: "ssl-cert-check -b -c /etc/letsencrypt/live/z2ua7x.duckdns.org/cert.pem | awk '{ print $NF }'"

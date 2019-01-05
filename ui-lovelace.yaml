@@ -1,0 +1,11 @@
+title: 400 N Bradford St 
+views:
+    # View tab title.
+  - title: Example
+    cards:
+        # The markdown card will render markdown text.
+      - type: markdown
+        title: Lovelace
+        theme: dark-mode
+        content: >
+          Welcome to your **Lovelace UI**.

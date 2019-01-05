@@ -1,0 +1,29 @@
+################################################
+## Lighting Automations
+################################################
+
+    ############################################
+    ## Turn on year-round outside lights at sunset
+    ############################################
+
+- alias: Lights - Turn on Year-Round Outside Lights at Sunset
+  trigger:
+    - platform: sun
+      event: sunset
+      offset: "-00:15:00"
+  action:
+    - service: homeassistant.turn_on
+      entity_id: light.front_porch_lights 
+
+    ############################################
+    ## Turn off year-round outlight lights at sunrise
+    ############################################
+
+- alias: Lights - Turn off Year-Round Outside Lights at Sunrise
+  trigger:
+    - platform: sun
+      event: sunrise
+      offset: "00:15:00"
+  action:
+    - service: homeassistant.turn_off
+      entity_id: light.front_porch_lights 

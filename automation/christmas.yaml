@@ -1,0 +1,24 @@
+###################################################
+## Christmas Automations
+###################################################
+
+  #################################################
+  ## Turn on the outlet
+  #################################################
+
+- alias: Turn on Christmas Lights
+  trigger:
+    - platform: sun
+      event: sunset
+      offset: "-00:15:00"
+  action:
+    - service: homeassistant.turn_on
+      entity_id: group.front_porch_outlets
+
+- alias: Turn off Christmas Lights
+  trigger: 
+    - platform: time
+      at: "23:00"
+  action:
+    - service: homeassistant.turn_off
+      entity_id: group.front_porch_outlets 

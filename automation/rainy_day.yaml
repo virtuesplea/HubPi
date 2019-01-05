@@ -1,0 +1,26 @@
+- alias: 'Rainy Day'
+  trigger:
+    - platform: state
+      entity_id: sensor.precip_intensity
+      to: 'rain'
+  condition:
+    - condition: time
+      after: '12:00'
+      before: '23:00'
+  action:
+    service: homeassistant.turn_on
+    entity_id: light.front_porch_lights
+
+- alias: 'Rain is over'
+  trigger:
+    - platform: state
+      entity_id: sensor.precip_intensity
+      to: 'None'
+  condition:
+    - condition: sun
+      before: 'sunset'
+      before_offset: '01:00:00'
+  action:
+    service: homeassistant.turn_off
+    entity_id: light.front_porch_lights
+    

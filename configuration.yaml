@@ -1,0 +1,92 @@
+homeassistant:
+  name: !secret home_name 
+  latitude: !secret home_latitude 
+  longitude: !secret home_longitude 
+  elevation: !secret home_elevation 
+  unit_system: imperial 
+  time_zone: EST 
+  customize: !include customize.yaml
+
+http:
+  api_password: !secret api_password
+  ssl_certificate: /etc/letsencrypt/live/z2ua7x.duckdns.org/fullchain.pem
+  ssl_key: /etc/letsencrypt/live/z2ua7x.duckdns.org/privkey.pem
+  base_url: 2zua7x.duckdns.org
+  ip_ban_enabled: true
+  login_attempts_threshold: 3 
+
+duckdns:
+  domain: z2ua7x
+  access_token: 62caabc9-ed5b-4da5-92e0-2bd87cc9104a
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+discovery:
+
+conversation:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+# Text to speech
+tts:
+  - platform: google
+
+# Cloud
+cloud:
+
+tuya:
+  username: !secret tuya_username 
+  password: !secret tuya_password 
+  country_code: 1
+
+# Amazon Echo
+emulated_hue:
+  host_ip: 192.168.1.187
+  listen_port: 8300
+
+mqtt:
+  broker: z2ua7x.duckdns.org 
+  port: 1883
+  username:!secret mqtt_username 
+  password: !secret mqtt_password 
+
+owntracks:
+  mqtt_topic: "owntracks/#"
+  max_gps_accuracy: 200
+  waypoints: true
+  events_only: false
+
+#device_tracker:
+#  - platform: owntracks
+#    max_gps_accuracy: 200
+#    waypoints: false
+#    mqtt_topic: "owntracks/#"
+#    events_only: false
+
+shell_command:
+  renew_ssl: ~/certbot/certbot-auto renew --quiet --no-self-upgrade --standalone --preferred-challenges http-01
+
+group: !include groups.yaml
+automation: !include_dir_merge_list automation 
+script: !include scripts.yaml
+light: !include light_groups.yaml
+history: !include history.yaml
+logbook: !include logbook.yaml
+sensor: !include sensors.yaml

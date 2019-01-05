@@ -1,0 +1,6 @@
+media_player.roku_tv:
+  friendly_name: Family Room TV
+media_player.55_tcl_roku_tv:
+  friendly_name: Living Room TV
+device_tracker.mosquittouser_veronicaphone:
+  friendly_name: Veronica
